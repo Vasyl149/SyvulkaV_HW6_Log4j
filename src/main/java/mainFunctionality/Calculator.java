@@ -1,4 +1,4 @@
-package MainFunctionality;
+package mainFunctionality;
 
 public interface Calculator {
     float calculate();

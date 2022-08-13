@@ -1,4 +1,4 @@
-package Console;
+package console;
 
 public abstract class Console {
 

@@ -1,6 +1,6 @@
-package PrintMessage;
+package printMessage;
 
-import Exceptions.LargeNumberException;
+import exceptions.LargeNumberException;
 
 public class Messages {
     public static void enterNumberMessage() {

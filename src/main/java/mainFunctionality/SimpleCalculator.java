@@ -1,6 +1,6 @@
-package MainFunctionality;
+package mainFunctionality;
 
-import PrintMessage.Messages;
+import printMessage.Messages;
 import logging.Log;
 import logging.LogLevels;
 

@@ -1,6 +1,6 @@
-package Console;
+package console;
 
-import PrintMessage.Messages;
+import printMessage.Messages;
 
 import java.util.Scanner;
 

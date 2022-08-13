@@ -1,13 +1,11 @@
-package syv;
+package program;
 
-import Console.ReadConsole;
-import Exceptions.LargeNumberException;
-import MainFunctionality.SimpleCalculator;
-import PrintMessage.Messages;
+import console.ReadConsole;
+import exceptions.LargeNumberException;
+import mainFunctionality.SimpleCalculator;
+import printMessage.Messages;
 import logging.Log;
 import logging.LogLevels;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 
 public class Main {
