@@ -1,4 +1,4 @@
-package program;
+package mainProgram;
 
 import console.ReadConsole;
 import exceptions.LargeNumberException;
