@@ -14,19 +14,14 @@ public class Main {
 
     public static void main(String[] args) {
 
-//        // Uncomment code below to run all log levels
+        // Uncomment code below to run all log levels
 
-//        int x=0;
-//        do {
-//            Log.log(LogLevels.TRACE,"This is a trace message");
-//            Log.log(LogLevels.DEBUG,"This is a debug message");
-//            Log.log(LogLevels.INFO,"This is an info message");
-//            Log.log(LogLevels.WARN,"This is a WARN message");
-//            Log.log(LogLevels.ERROR,"This is an error message");
-//            Log.log(LogLevels.FATAL,"This is FATAL message");
-//            x++;
-//        }
-//        while(x<=0);
+//        Log.log(LogLevels.TRACE, "This is a trace message");
+//        Log.log(LogLevels.DEBUG, "This is a debug message");
+//        Log.log(LogLevels.INFO, "This is an info message");
+//        Log.log(LogLevels.WARN, "This is a WARN message");
+//        Log.log(LogLevels.ERROR, "This is an error message");
+//        Log.log(LogLevels.FATAL, "This is FATAL message");
 //        System.exit(0);
 
         ReadConsole readConsole = new ReadConsole();
