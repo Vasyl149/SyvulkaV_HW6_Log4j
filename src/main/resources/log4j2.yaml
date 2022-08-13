@@ -1,0 +1,98 @@
+Configuration:
+  name: Log4j2_Config
+  Properties:
+    Property:
+      name: log-path
+      value: logs
+
+  Appenders:
+    Console:
+        # TASK_4 - Configure logger that in the console will be recorded only “WARN”.
+      name: Console_Appender
+      PatternLayout:
+        disableAnsi: false
+        Pattern: "%highlight{%-5level}{FATAL=bg_red} %style{%date{yyyy-MM-dd HH:mm:ss.SSS}}{blue} %class{1}:%L - %highlight{%msg} %xEx{short}%n"
+      Filters:
+        ThresholdFilter:
+          level: error
+          onMatch: DENY
+          onMismatch: NEUTRAL
+
+
+    File:
+        - # TASK_2a - File will not be overwritten | TASK_3 Configure logger that all levels higher than “ERROR” will be saved in the  file.
+          name: willNotOverwrite
+          fileName: ${log-path}/willNotOverwrite.log
+          PatternLayout:
+            Pattern: "[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} %class{1}:%L - %msg%xEx{short}%n"
+          Filters:
+            ThresholdFilter:
+              level: fatal
+              onMatch: NEUTRAL
+              onMismatch: DENY
+
+
+
+    RollingFile:
+
+        - #TASK_2b. file will be overwritten every day | TASK4_4. Configure logger that in the file will be recorded only “INFO”
+          name: overWriteEveryDay
+          fileName: ${log-path}/overWriteEveryDay.log
+          filePattern: ${log-path}/archive/rolFile3-%d{yy-MM-dd}.log
+          PatternLayout:
+            Pattern: "[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} %class{1}:%L - %msg%xEx{short}%n"
+          Policies:
+            TimeBasedTriggeringPolicy:
+              interval: 1
+              modulate: true
+          Filters:
+            ThresholdFilter:
+              level: warn
+              onMatch: DENY
+              onMismatch: NEUTRAL
+
+        - # TASK_2c - file will be overwritten after reaching the size of 1MB
+          name: overwriteWhen1MB
+          fileName: ${log-path}/overwriteWhen1MB.log
+          filePattern: "logs/archive/overwriteWhen1MB.log.%d{yyyy-MM-dd}.gz"
+          PatternLayout:
+            Pattern: "[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} %class{1}:%L - %msg%xEx{short}%n"
+          Policies:
+            SizeBasedTriggeringPolicy:
+              size: 1MB
+
+
+
+        - # TASK_2d -Every day log will be written to a new file in specific time (12:00).
+          name: rolFileInSpecificTime
+          fileName: ${log-path}/writeNewFileInSpecificTime.log
+          filePattern: ${log-path}/archive/writeNewFileInSpecificTime-_old-%d{yy-MM-dd-HH-mm}.log
+          PatternLayout:
+            Pattern: "[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} %class{1}:%L - %msg%xEx{short}%n"
+          CronTriggeringPolicy:
+            schedule: "0 00 12 ? * *"
+            evaluateOnStartup: true
+
+
+  Loggers:
+    Root:
+      level: all
+      AppenderRef:
+        - ref: Console_Appender
+          level: warn
+        - ref: willNotOverwrite
+          level: all
+        - ref: overwriteWhen1MB
+          level: info
+        - ref: overWriteEveryDay
+          level: info
+        - ref: rolFileInSpecificTime
+          level: all
+
+    Logger:
+      - name: syv.Main
+        additivity: false
+        level: all
+        AppenderRef:
+          - ref: Console_Appender
+            level: warn

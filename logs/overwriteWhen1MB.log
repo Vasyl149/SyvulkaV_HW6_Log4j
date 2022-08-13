@@ -1,0 +1,4 @@
+[INFO ] 2022-08-13 20:03:15.915 Log:18 - This is an info message
+[WARN ] 2022-08-13 20:03:15.915 Log:21 - This is a WARN message
+[ERROR] 2022-08-13 20:03:15.916 Log:24 - This is an error message
+[FATAL] 2022-08-13 20:03:15.916 Log:27 - This is FATAL message
